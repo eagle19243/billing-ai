@@ -1,0 +1,162 @@
+Get http://20.69.232.206:5001/get_contracts
+
+POST http://20.69.232.206:5001/add_contract
+Request Body:
+{
+    "contract_title": "new contract"
+}
+
+PUT http://20.69.232.206:5001/update_contract
+Request Body:
+{
+    "contract_id": 65,
+    "contract_title": "new contract updated_1"
+}
+
+DELETE http://20.69.232.206:5001/delete_contract
+Request Body:
+{
+    "contract_id": 65
+}
+
+
+Get http://20.69.232.2061:5001/get_categories?page=0&offset=10&search_query=cont
+
+POST http://20.69.232.206:5001/add_category
+Request Body:
+{
+    "category_name": "new category"
+}
+
+PUT http://20.69.232.206:5001/update_category
+Request Body:
+{
+    "category_id": 511,
+    "category_name": "new category updated"
+}
+
+DELETE http://20.69.232.206:5001/delete_category
+Request Body:
+{
+    "category_id": 512
+}
+
+Get http://20.69.232.2061:5001/get_variations?page=0&offset=10&search_query=cont
+
+POST http://20.69.232.206:5001/add_variation
+Request Body:
+{
+    "variation_name": "new variation"
+}
+
+PUT http://20.69.232.206:5001/update_variation
+Request Body:
+{
+    "variation_name": "new variation updated",
+    "variation_id": 759
+}
+
+DELETE http://20.69.232.206:5001/delete_variation
+Request Body:
+{
+    "variation_id": 759
+}
+
+POST http://20.69.232.206:5001/add_category_to_contract
+Request Body:
+{
+    "contract_ids": [68],
+    "category_id": 512
+}
+
+Get http://20.69.232.2061:5002/get_clauses?page=0&offset=10&search_query=cont
+
+POST http://20.69.232.2061:5002/add_clause
+{
+    "clause_definition": "new definitoin of the clause",
+    "clause_tag": "Neutral"
+}
+user can select from following 5 clause Tags:
+Neutral, (Yellow)
+Provider favor (High),  Maroon.
+Provider favor (Moderate),  Light maroon
+Receiver favor (High), dark green
+Receiver favor (Moderate) light green
+
+PUT http://20.69.232.206:5001/update_clause
+Request Body:
+{
+    "clause_id": 1339,
+    "clause_definition": "new definitoin of the clause1",
+    "clause_tag": "Neutral"
+}
+
+DELETE http://20.69.232.206:5001/delete_clause
+Request Body:
+{
+    "clause_id": 1339
+}
+
+#for Home/Dashboard
+Get http://20.69.232.206:5002/get_stats
+Response:
+{
+    "categories_count": 511,
+    "clauses_count": 1261,
+    "contracts_count": 67,
+    "tags_count": 5,
+    "variations_count": 759
+}
+
+
+Get     http://20.69.232.206:5001/get_categories?contract_id=0
+Get     http://20.69.232.206:5001/get_variations?contract_id=0&category_id=0
+Get     http://20.69.232.206:5001/get_tags?contract_id=1&category_id=8&variation_id=3
+Get     http://20.69.232.206:5001/get_clauses?contract_id=1&category_id=8&variation_id=3&tag=Heavy Pro-Provider
+
+Post http://20.69.232.206:5001/update_clause
+request body:
+{
+    "clause_id": 0,
+    "clause_definition": "new definitoin of the clause"
+}
+
+Post    http://20.69.232.206:5001/analyze_clauses
+request body:
+{
+    "clauses": [
+        {
+            "clause": "clause1",
+            "tag_color": "green",
+            "tag_name": "Neutral"
+        },
+        {
+            "clause": "clause2",
+            "tag_color": "green",
+            "tag_name": "Neutral"
+        }
+    ]
+}
+
+Post    http://20.69.232.206:5001/find_matching_clauses
+request body:
+{"clause": "clause1"}
+
+Post    http://20.69.232.206:5001/add_new_clause
+request body:
+{
+    "contract_id": 0,
+    "category_id": 1,
+    "variation_id": 0,
+    "clause_definition": "new definitoin of the clause",
+    "clause_tag": "Neutral"
+}
+
+
+Neutral ( no change for this one)
+
+Heavy_Pro_Provider= Provider Favor (High)
+Slight_Pro_Provider= Provider favor (Moderate)
+
+Heavy_Pro_Providee= Receiver favor (High)
+Slight_Pro_Providee= Receiver favor (Moderate)
