@@ -20,7 +20,7 @@ Request Body:
 }
 
 
-Get http://20.69.232.2061:5001/get_categories?page=0&offset=10&search_query=cont
+Get http://20.69.232.206:5001/get_categories?page=0&offset=10&search_query=cont
 
 POST http://20.69.232.206:5001/add_category
 Request Body:
